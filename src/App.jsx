@@ -1,9 +1,12 @@
 import nanoId from 'nano-id'
 import { useState } from 'react'
+import Confetti from 'react-confetti'
+import { useWindowSize } from 'react-use'
 import Die from './components/Die'
 
 export default function App() {
 	const [dice, setDice] = useState(generateAllNewDice())
+	const { width, height } = useWindowSize()
 
 	const gameWon =
 		dice.every((die) => die.isHeld) && dice.every((die) => die.value === dice[0].value)
@@ -66,6 +69,7 @@ export default function App() {
 			<button className="roll" onClick={rollDice}>
 				{gameWon ? 'New Game' : 'Roll'}
 			</button>
+			{gameWon && <Confetti width={width} height={height} />}
 		</main>
 	)
 }
