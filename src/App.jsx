@@ -19,12 +19,19 @@ export default function App() {
 		return randomNumbers
 	}
 
+	function rollDice() {
+		setDice(generateAllNewDice())
+	}
+
 	const dieComponents = randomNumbers.map((num) => <Die value={num} />)
 
 	return (
 		<main>
 			<main>
 				<div className="dice-container">{dieComponents}</div>
+				<button className="roll" onClick={rollDice}>
+					Roll Dice
+				</button>
 			</main>
 		</main>
 	)
