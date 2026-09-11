@@ -1,3 +1,4 @@
+import nanoId from 'nano-id'
 import { useState } from 'react'
 import Die from './components/Die'
 
@@ -13,7 +14,7 @@ export default function App() {
 	function generateAllNewDice() {
 		const randomDice = []
 		for (let i = 1; i <= 10; i++) {
-			randomDice.push({ value: getRandomInt(1, 6), isHeld: false, id: i })
+			randomDice.push({ value: getRandomInt(1, 6), isHeld: false, id: nanoId() })
 		}
 
 		return randomDice
@@ -24,7 +25,7 @@ export default function App() {
 	}
 
 	const dieComponents = dice.map((die) => (
-		<Die value={die.value} isHeld={die.isHeld} id={die.id} />
+		<Die value={die.value} isHeld={die.isHeld} key={die.id} />
 	))
 
 	return (
