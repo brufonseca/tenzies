@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Die from './components/Die'
 
 export default function App() {
-	const [randomNumbers, setRandomNumbers] = useState(generateAllNewDice())
+	const [dice, setDice] = useState(generateAllNewDice())
 
 	function getRandomInt(min, max) {
 		min = Math.ceil(min)
@@ -11,19 +11,21 @@ export default function App() {
 	}
 
 	function generateAllNewDice() {
-		const randomNumbers = []
+		const randomDice = []
 		for (let i = 1; i <= 10; i++) {
-			randomNumbers.push(getRandomInt(1, 6))
+			randomDice.push({ value: getRandomInt(1, 6), isHeld: false, id: i })
 		}
 
-		return randomNumbers
+		return randomDice
 	}
 
 	function rollDice() {
 		setDice(generateAllNewDice())
 	}
 
-	const dieComponents = randomNumbers.map((num) => <Die value={num} />)
+	const dieComponents = dice.map((die) => (
+		<Die value={die.value} isHeld={die.isHeld} id={die.id} />
+	))
 
 	return (
 		<main>
