@@ -25,7 +25,15 @@ export default function App() {
 	}
 
 	function hold(id) {
-		console.log(id)
+		setDice((prev) =>
+			prev.map((item) => {
+				if (item.id === id) {
+					return { ...item, isHeld: !item.isHeld }
+				}
+
+				return { ...item }
+			}),
+		)
 	}
 
 	const dieComponents = dice.map((die) => (
