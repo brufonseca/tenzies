@@ -69,3 +69,7 @@ button.roll {
 	border: none;
 	border-radius: 4px;
 }
+
+button.green {
+	background-color: #59e391;
+}
