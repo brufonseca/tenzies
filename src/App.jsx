@@ -5,7 +5,7 @@ import { useWindowSize } from 'react-use'
 import Die from './components/Die'
 
 export default function App() {
-	const [dice, setDice] = useState(generateAllNewDice())
+	const [dice, setDice] = useState(() => generateAllNewDice())
 	const { width, height } = useWindowSize()
 
 	const gameWon =
